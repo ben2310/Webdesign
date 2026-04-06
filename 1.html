@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body, html { margin: 0; height: 100%; }
+        .container {
+            display: grid;
+            grid-template-rows: 1fr 1fr; /* Two equal rows */
+            height: 100vh;
+        }
+        .row1 { background-color: #ff9999; }
+        .row2-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two equal columns */
+        }
+        .col1 { background-color: #99ff99; }
+        .col2 { background-color: #9999ff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row1">Top Row (100% Width)</div>
+        <div class="row2-container">
+            <div class="col1">Bottom Left</div>
+            <div class="col2">Bottom Right</div>
+        </div>
+    </div>
+</body>
+</html>

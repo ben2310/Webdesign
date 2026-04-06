@@ -1,0 +1,21 @@
+<script>
+    function calculateArea() {
+        // Prompt user for input
+        let length = prompt("Enter the length of the rectangle:");
+        let width = prompt("Enter the width of the rectangle:");
+
+        // Convert strings to numbers and calculate
+        let area = parseFloat(length) * parseFloat(width);
+
+        // Display result
+        if (!isNaN(area)) {
+            alert("The area of the rectangle is: " + area);
+            console.log("Calculated Area: " + area);
+        } else {
+            alert("Please enter valid numbers.");
+        }
+    }
+    
+    // Call the function
+    calculateArea();
+</script>
