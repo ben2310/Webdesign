@@ -1,0 +1,923 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanjirappally Medicity | Premium Healthcare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+ 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+   
+    :root {
+      --primary: #0A192F;
+      --primary-light: #172A45;
+      --accent: #C5A059; 
+      --accent-hover: #D4AF37;
+      --text-main: #333333; 
+      --text-muted: #666666;
+      --bg-body: #FCFCFC;
+      --white: #ffffff;
+      
+      
+      --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.03);
+      --shadow-hover: 0 10px 30px rgba(10, 25, 47, 0.08);
+      
+      
+      --radius: 4px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg-body);
+      color: var(--text-muted);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, .nav-logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--primary);
+    }
+
+    
+    h1 { font-size: 64px; font-weight: 600; line-height: 1.1; margin-bottom: 24px; }
+    h2 { font-size: 42px; font-weight: 500; line-height: 1.2; margin-bottom: 20px; }
+    h3 { font-size: 22px; font-weight: 600; margin-bottom: 12px; }
+    p { font-size: 16px; font-weight: 300; }
+
+    
+    section {
+      display: none;
+      padding: 120px 8%;
+      min-height: 80vh;
+      animation: elegantFade 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      opacity: 0;
+      transform: translateY(15px);
+    }
+
+    section.active { display: block; opacity: 1; transform: translateY(0); }
+
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 70px;
+    }
+
+  
+    .editorial-subtitle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      font-family: 'Inter', sans-serif;
+    }
+    .editorial-subtitle::before, .editorial-subtitle::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    @keyframes elegantFade {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+
+    nav {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .nav-logo {
+      font-size: 26px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .nav-logo i { color: var(--accent); font-size: 24px; }
+
+    nav ul { display: flex; gap: 40px; list-style: none; align-items: center; }
+
+    nav a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: 0.3s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    nav a:hover, nav li.active a { color: var(--accent); }
+
+    .nav-btn {
+      background: var(--primary);
+      color: var(--white) !important;
+      padding: 12px 28px;
+      border-radius: var(--radius);
+      font-weight: 500;
+      border: 1px solid var(--primary);
+    }
+    .nav-btn:hover { background: transparent; color: var(--primary) !important; }
+
+  
+    .hero-wrap {
+      position: relative;
+      background: linear-gradient(to right, rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.6)),
+                  url('https://images.unsplash.com/photo-1538108149393-ceefbce203b5?q=80&w=1600');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .hero-content {
+      text-align: center;
+      max-width: 900px;
+      z-index: 2;
+    }
+
+    .hero-content h1 { color: var(--white); font-style: italic; }
+    .hero-content p { color: rgba(255,255,255,0.8); font-size: 18px; margin-bottom: 45px; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+    .hero-btns { display: flex; gap: 20px; justify-content: center; }
+
+    .btn {
+      padding: 16px 40px;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-gold { background: var(--accent); color: white; }
+    .btn-gold:hover { background: transparent; border-color: var(--accent); color: var(--accent); }
+
+    .btn-outline-white { background: transparent; color: white; border-color: rgba(255,255,255,0.4); }
+    .btn-outline-white:hover { background: white; color: var(--primary); border-color: white; }
+
+    .btn-outline-dark { background: transparent; color: var(--primary); border-color: var(--primary); }
+    .btn-outline-dark:hover { background: var(--primary); color: white; }
+
+    
+    .hero-stats {
+      display: flex;
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(197, 160, 89, 0.3);
+      border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+      padding: 25px 60px;
+      gap: 80px;
+      margin-top: 80px;
+    }
+
+    .stat-item { text-align: center; }
+    .stat-item .stats-number { font-size: 40px; color: var(--accent); font-style: italic; line-height: 1; margin-bottom: 5px; }
+    .stat-item p { color: rgba(255,255,255,0.7); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 2px;}
+
+   
+    .about-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-top: 60px;
+      align-items: center;
+    }
+
+    .about-image-wrapper { position: relative; }
+
+    .main-hospital-img {
+      width: 100%;
+      height: 550px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .experience-badge {
+      position: absolute;
+      bottom: -30px;
+      right: -30px;
+      background: var(--primary);
+      color: white;
+      padding: 35px 45px;
+      text-align: center;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .exp-years {
+      display: block; font-size: 42px; font-weight: 500;
+      font-family: 'Playfair Display', serif; color: var(--accent); line-height: 1; margin-bottom: 8px; font-style: italic;
+    }
+
+    .exp-text {
+      font-size: 11px; color: rgba(255,255,255,0.8); text-transform: uppercase;
+      letter-spacing: 2px; font-weight: 400;
+    }
+
+    .about-content h2 { margin-bottom: 30px; }
+    .about-content p { margin-bottom: 35px; }
+
+    .about-features { list-style: none; margin-bottom: 45px; }
+    .about-features li { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; color: var(--text-main); font-size: 15px; font-weight: 400;}
+    .about-features i { color: var(--accent); font-size: 16px; }
+
+
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: all 0.5s ease;
+      border: 1px solid rgba(0,0,0,0.04);
+      box-shadow: var(--shadow-soft);
+    }
+    .card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); }
+
+   
+    .facilities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; }
+    
+    .facility-card {
+      background: white; padding: 45px 30px; border-radius: var(--radius);
+      text-align: center; border: 1px solid rgba(0,0,0,0.03); transition: 0.4s;
+    }
+    .facility-card:hover { border-color: var(--accent); }
+    .facility-card i { font-size: 36px; color: var(--primary); margin-bottom: 24px; transition: 0.4s; }
+    .facility-card:hover i { color: var(--accent); transform: scale(1.1); }
+    .facility-card h3 { font-size: 18px; margin-bottom: 12px; }
+
+    
+    .service-card .img-container { position: relative; height: 260px; overflow: hidden; }
+    .service-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; filter: brightness(0.95); }
+    .service-card:hover img { transform: scale(1.05); filter: brightness(1); }
+    
+    .service-card .card-body { padding: 40px 30px; text-align: center; }
+    .service-card i { font-size: 28px; color: var(--accent); margin-bottom: 16px; }
+    .service-card h3 { font-size: 20px; }
+
+    
+    .doctor-card { padding: 50px 30px; text-align: center; }
+    .doctor-card .avatar {
+      width: 140px; height: 140px; margin: 0 auto 25px;
+      border-radius: 50%; padding: 2px;
+      border: 1px solid var(--accent);
+    }
+    .doctor-card img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; padding: 4px; background: white;}
+    
+    .doc-dept {
+      color: var(--accent); font-size: 11px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; display: block;
+    }
+    .doc-title { font-size: 14px; font-style: italic; margin-bottom: 15px; }
+    
+    .doc-stats {
+      display: flex; justify-content: center; gap: 20px;
+      margin-top: 25px; padding-top: 25px; border-top: 1px solid rgba(0,0,0,0.05);
+    }
+    .doc-stats div { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-main); }
+    .doc-stats i { color: var(--accent); font-size: 14px; }
+
+    .search-wrapper { display: flex; justify-content: center; margin-bottom: 60px; }
+    .search-box { position: relative; width: 100%; max-width: 600px; }
+    .search-box i { position: absolute; top: 50%; left: 24px; transform: translateY(-50%); color: var(--accent); }
+    .search-box input {
+      width: 100%; padding: 20px 24px 20px 60px;
+      border: 1px solid rgba(0,0,0,0.1); border-radius: var(--radius); font-size: 15px;
+      background: white; outline: none; transition: 0.4s;
+      font-family: 'Inter', sans-serif;
+    }
+    .search-box input:focus { border-color: var(--primary); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+  
+    .table-container {
+      margin-top: 80px; overflow-x: auto; border-radius: var(--radius);
+      border: 1px solid rgba(0,0,0,0.05); background: white;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    th {
+      background: var(--primary); color: white; padding: 24px 30px;
+      text-align: left; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 2px;
+    }
+    td { padding: 20px 30px; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 14px; color: var(--text-main); }
+    tr:hover td { background: #fafafa; }
+    tr:last-child td { border-bottom: none; }
+
+    
+    .booking-grid {
+      display: grid; grid-template-columns: 1fr 1.5fr; gap: 0;
+      margin-top: 50px; background: white; border-radius: var(--radius);
+      box-shadow: var(--shadow-soft); border: 1px solid rgba(0,0,0,0.04); overflow: hidden;
+    }
+
+    .booking-context {
+      background: var(--primary); padding: 80px 60px; color: white;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    
+    .booking-context h2 { color: white; font-size: 36px; margin-bottom: 20px; font-style: italic; }
+    .booking-context p { color: rgba(255,255,255,0.7); margin-bottom: 50px; font-weight: 300; }
+    
+    .contact-item { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 30px; }
+    .contact-item i { color: var(--accent); font-size: 24px; margin-top: 4px; }
+    .contact-item h4 { font-size: 13px; color: white; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px; font-family: 'Inter', sans-serif;}
+    .contact-item span { font-size: 15px; color: rgba(255,255,255,0.7); font-weight: 300; }
+
+    .booking-form-wrap { padding: 80px 60px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+    .form-col-full { grid-column: 1 / -1; margin-bottom: 24px; }
+
+    label { display: block; margin-bottom: 10px; font-size: 11px; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
+    
+    input, select {
+      width: 100%; padding: 16px 20px;
+      border: 1px solid rgba(0,0,0,0.1); border-radius: var(--radius); font-size: 15px;
+      background: #fafafa; outline: none; transition: all 0.3s;
+      font-family: 'Inter', sans-serif; color: var(--text-main);
+    }
+    input:focus, select:focus { border-color: var(--accent); background: white; }
+    .submit-btn { width: 100%; padding: 20px; justify-content: center; margin-top: 16px; font-size: 14px; }
+
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(10, 25, 47, 0.8); display: none; z-index: 2000;
+      backdrop-filter: blur(4px);
+    }
+    .modal {
+      position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      background: white; padding: 60px; border-radius: var(--radius);
+      text-align: center; width: 90%; max-width: 480px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+    }
+    .modal-icon { color: var(--accent); font-size: 48px; margin: 0 auto 24px; }
+    .modal h2 { font-size: 32px; margin-bottom: 16px; }
+    .modal p { font-size: 16px; color: var(--text-muted); margin-bottom: 35px; }
+
+
+    footer {
+      background: var(--primary); padding: 100px 8% 40px;
+      margin-top: 100px; color: rgba(255,255,255,0.6);
+      border-top: 4px solid var(--accent);
+    }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 60px; margin-bottom: 70px; }
+    .footer-brand { font-size: 32px; color: white; display: flex; align-items: center; gap: 12px; margin-bottom: 24px; font-family: 'Playfair Display', serif; text-decoration: none;}
+    .footer-brand i { color: var(--accent); font-size: 28px; }
+    
+    .footer-col h4 { color: white; font-size: 13px; margin-bottom: 28px; text-transform: uppercase; letter-spacing: 2px; font-family: 'Inter', sans-serif; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 16px; }
+    .footer-col ul a { color: rgba(255,255,255,0.6); text-decoration: none; transition: 0.3s; font-size: 14px; font-weight: 300; }
+    .footer-col ul a:hover { color: var(--accent); }
+    
+    .social-icons { display: flex; gap: 16px; margin-top: 30px; }
+    .social-icons a {
+        width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2);
+        display: flex; justify-content: center; align-items: center; color: white;
+        transition: 0.4s;
+    }
+    .social-icons a:hover { background: var(--accent); border-color: var(--accent); }
+    
+    .footer-bottom {
+        text-align: center; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1);
+        font-size: 12px; display: flex; justify-content: space-between; align-items: center;
+        text-transform: uppercase; letter-spacing: 1px; font-weight: 300;
+    }
+
+   
+    @media (max-width: 1024px) {
+        .about-section { grid-template-columns: 1fr; gap: 60px; margin-top: 80px; }
+        .main-hospital-img { height: 450px; }
+        .experience-badge { right: 50%; transform: translateX(50%); bottom: -30px; }
+        .booking-grid { grid-template-columns: 1fr; }
+        .booking-context { padding: 60px 40px; }
+        .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      nav { flex-direction: column; padding: 20px; gap: 20px; }
+      nav ul { gap: 16px; flex-wrap: wrap; justify-content: center; }
+      .hero-wrap { height: auto; padding: 80px 20px; margin-top: 0; }
+      .hero-content h1 { font-size: 42px; }
+      .hero-stats { flex-direction: column; gap: 40px; padding: 40px; margin-top: 50px; }
+      .hero-btns { flex-direction: column; gap: 16px; }
+      .main-hospital-img { height: 350px; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      .form-row .form-col-full { margin-bottom: 24px; }
+      .booking-form-wrap { padding: 50px 30px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 16px; }
+      section { padding: 80px 5%; }
+    }
+  </style>
+</head>
+<body>
+
+  
+  <nav>
+    <a href="#" class="nav-logo" onclick="showTab('home')">
+        <i class="fas fa-leaf"></i> Medicity
+    </a>
+    <ul>
+      <li id="nav-home" class="active"><a onclick="showTab('home')">Home</a></li>
+      <li id="nav-facilities"><a onclick="showTab('facilities')">Facilities</a></li>
+      <li id="nav-services"><a onclick="showTab('services')">Expertise</a></li>
+      <li id="nav-doctors"><a onclick="showTab('doctors')">Physicians</a></li>
+      <li><a class="nav-btn" onclick="showTab('appointment')">Book Visit</a></li>
+    </ul>
+  </nav>
+
+  
+  <section id="home" class="active">
+    <div class="hero-wrap">
+      <div class="hero-content">
+        <h1>The Art of Healing,<br>Elevated.</h1>
+        <p>Experience an unparalleled standard of medical excellence, where state-of-the-art technology meets compassionate, bespoke patient care.</p>
+        <div class="hero-btns">
+          <button class="btn btn-gold" onclick="showTab('appointment')">Schedule Consultation</button>
+          <a class="btn btn-outline-white" href="tel:+18001234567">Contact Concierge</a>
+        </div>
+        
+        <div class="hero-stats">
+            <div class="stat-item">
+                <div class="stats-number">50+</div>
+                <p>Renowned Specialists</p>
+            </div>
+            <div class="stat-item">
+                <div class="stats-number">15+</div>
+                <p>Centers of Excellence</p>
+            </div>
+            <div class="stat-item">
+                <div class="stats-number">24/7</div>
+                <p>Premium Support</p>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="about-section">
+      <div class="about-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?q=80&w=1200" alt="Kanjirappally Medicity Architecture" class="main-hospital-img">
+        <div class="experience-badge">
+          <span class="exp-years">15</span>
+          <span class="exp-text">Years of Excellence</span>
+        </div>
+      </div>
+      
+      <div class="about-content">
+        <div class="editorial-subtitle">The Medicity Standard</div>
+        <h2>A Legacy of Uncompromising Care</h2>
+        <p>Located in the heart of Kanjirappally, Medicity is a premier healthcare institution designed to provide a healing environment that feels less like a hospital and more like a sanctuary. Our globally trained specialists utilize cutting-edge medical advancements to deliver bespoke treatment plans tailored to your unique needs.</p>
+        <ul class="about-features">
+          <li><i class="fas fa-circle-notch"></i> Luxury Private Suites & Patient Accommodations</li>
+          <li><i class="fas fa-circle-notch"></i> Advanced Precision & Robotic Surgery Units</li>
+          <li><i class="fas fa-circle-notch"></i> Exclusive 24/7 Priority Emergency Care</li>
+        </ul>
+        <button class="btn btn-outline-dark" onclick="showTab('facilities')">Tour Our Facilities</button>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="facilities">
+    <div class="section-header">
+        <div class="editorial-subtitle">World-Class Infrastructure</div>
+        <h2>Designed for Healing</h2>
+        <p>Our architectural spaces and technological infrastructure are meticulously designed to ensure precise diagnostics, effective treatment, and profound comfort.</p>
+    </div>
+    <div class="facilities-grid">
+      <div class="facility-card">
+        <i class="fas fa-procedures"></i>
+        <h3>Premium ICU</h3>
+        <p>Ultra-modern intensive care units featuring continuous AI-assisted monitoring.</p>
+      </div>
+      <div class="facility-card">
+        <i class="fas fa-microscope"></i>
+        <h3>Diagnostic Center</h3>
+        <p>High-resolution imaging and fully automated, rapid-result pathology laboratories.</p>
+      </div>
+      <div class="facility-card">
+        <i class="fas fa-pills"></i>
+        <h3>Boutique Pharmacy</h3>
+        <p>A comprehensive inventory of verified pharmaceuticals, available exclusively 24/7.</p>
+      </div>
+      <div class="facility-card">
+        <i class="fas fa-ambulance"></i>
+        <h3>Concierge Ambulances</h3>
+        <p>A fleet of advanced life-support vehicles for immediate, discreet medical transport.</p>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="services">
+    <div class="section-header">
+        <div class="editorial-subtitle">Centers of Excellence</div>
+        <h2>Specialized Clinical Programs</h2>
+        <p>Our multidisciplinary teams collaborate seamlessly to offer holistic, advanced medical interventions across a spectrum of specialties.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card service-card">
+        <div class="img-container">
+            <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=600" alt="Emergency">
+        </div>
+        <div class="card-body">
+          <i class="fas fa-truck-medical"></i>
+          <h3>Emergency Trauma</h3>
+          <p>Immediate, expert interventions by dedicated trauma teams equipped for critical conditions.</p>
+        </div>
+      </div>
+      
+      <div class="card service-card">
+        <div class="img-container">
+            <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=600" alt="Cardiology">
+        </div>
+        <div class="card-body">
+          <i class="fas fa-heartbeat"></i>
+          <h3>Cardiology</h3>
+          <p>Pioneering heart health diagnostics, complex interventional procedures, and cardiac surgery.</p>
+        </div>
+      </div>
+      
+      <div class="card service-card">
+        <div class="img-container">
+            <img src="https://images.unsplash.com/photo-1581595219315-a187dd40c322?q=80&w=600" alt="Neurology">
+        </div>
+        <div class="card-body">
+          <i class="fas fa-brain"></i>
+          <h3>Neurology</h3>
+          <p>Exacting treatments for neurovascular conditions, spine health, and complex neurological disorders.</p>
+        </div>
+      </div>
+
+      <div class="card service-card">
+        <div class="img-container">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=600" alt="Orthopedics & Physiotherapy">
+        </div>
+        <div class="card-body">
+          <i class="fas fa-bone"></i>
+          <h3>Orthopedics</h3>
+          <p>Precision joint reconstruction, sports medicine, and highly personalized physical rehabilitation.</p>
+        </div>
+      </div>
+      
+      <div class="card service-card">
+        <div class="img-container">
+            <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=600" alt="Pediatrics">
+        </div>
+        <div class="card-body">
+          <i class="fas fa-baby"></i>
+          <h3>Pediatrics</h3>
+          <p>Compassionate, specialized healthcare designed to nurture the well-being of infants and children.</p>
+        </div>
+      </div>
+      
+      <div class="card service-card">
+        <div class="img-container">
+            <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?q=80&w=600" alt="Oncology">
+        </div>
+        <div class="card-body">
+          <i class="fas fa-ribbon"></i>
+          <h3>Oncology</h3>
+          <p>Advanced diagnostic staging, targeted systemic therapies, and leading-edge surgical oncology.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
+  <section id="doctors">
+    <div class="section-header">
+        <div class="editorial-subtitle">The Medical Board</div>
+        <h2>Our Esteemed Physicians</h2>
+        <p>Medicity is home to a select group of highly credentialed specialists renowned for their clinical excellence and patient dedication.</p>
+    </div>
+    
+    <div class="search-wrapper">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchDoctor" placeholder="Search our physician directory..." onkeyup="searchDoctor()">
+      </div>
+    </div>
+    
+    <div class="card-grid" id="doctorCards">
+      <div class="card doctor-card">
+        <div class="avatar"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Dr. John"></div>
+        <span class="doc-dept">Cardiology</span>
+        <h3>Dr. John Smith</h3>
+        <p class="doc-title">Director of Cardiology</p>
+        <div class="doc-stats">
+            <div><i class="fas fa-certificate"></i> Board Certified</div>
+            <div><i class="fas fa-clock"></i> 15 Yrs</div>
+        </div>
+      </div>
+      
+      <div class="card doctor-card">
+        <div class="avatar"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Dr. Sarah"></div>
+        <span class="doc-dept">Neurology</span>
+        <h3>Dr. Sarah Johnson</h3>
+        <p class="doc-title">Lead Neurosurgeon</p>
+        <div class="doc-stats">
+            <div><i class="fas fa-certificate"></i> Board Certified</div>
+            <div><i class="fas fa-clock"></i> 12 Yrs</div>
+        </div>
+      </div>
+      
+      <div class="card doctor-card">
+        <div class="avatar"><img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Dr. David"></div>
+        <span class="doc-dept">Orthopedics</span>
+        <h3>Dr. David Miller</h3>
+        <p class="doc-title">Head of Orthopedics</p>
+        <div class="doc-stats">
+            <div><i class="fas fa-certificate"></i> Board Certified</div>
+            <div><i class="fas fa-clock"></i> 20 Yrs</div>
+        </div>
+      </div>
+
+      <div class="card doctor-card">
+        <div class="avatar"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Dr. Emily"></div>
+        <span class="doc-dept">Pediatrics</span>
+        <h3>Dr. Emily Chen</h3>
+        <p class="doc-title">Senior Pediatrician</p>
+        <div class="doc-stats">
+            <div><i class="fas fa-certificate"></i> Board Certified</div>
+            <div><i class="fas fa-clock"></i> 10 Yrs</div>
+        </div>
+      </div>
+
+      <div class="card doctor-card">
+        <div class="avatar"><img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Dr. Robert"></div>
+        <span class="doc-dept">Oncology</span>
+        <h3>Dr. Robert Wilson</h3>
+        <p class="doc-title">Chief of Oncology</p>
+        <div class="doc-stats">
+            <div><i class="fas fa-certificate"></i> Board Certified</div>
+            <div><i class="fas fa-clock"></i> 18 Yrs</div>
+        </div>
+      </div>
+
+      <div class="card doctor-card">
+        <div class="avatar"><img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Dr. Priya"></div>
+        <span class="doc-dept">Gynecology</span>
+        <h3>Dr. Priya Sharma</h3>
+        <p class="doc-title">Consultant Gynecologist</p>
+        <div class="doc-stats">
+            <div><i class="fas fa-certificate"></i> Board Certified</div>
+            <div><i class="fas fa-clock"></i> 14 Yrs</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Physician</th>
+            <th>Department</th>
+            <th>Consultation Schedule</th>
+            <th>Timing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Dr. John Smith</td><td>Cardiology</td><td>Mon, Wed, Fri</td><td>09:00 AM - 01:00 PM</td></tr>
+          <tr><td>Dr. Sarah Johnson</td><td>Neurology</td><td>Tue, Thu, Sat</td><td>02:00 PM - 06:00 PM</td></tr>
+          <tr><td>Dr. David Miller</td><td>Orthopedics</td><td>Mon to Fri</td><td>10:00 AM - 04:00 PM</td></tr>
+          <tr><td>Dr. Emily Chen</td><td>Pediatrics</td><td>Mon to Sat</td><td>09:00 AM - 02:00 PM</td></tr>
+          <tr><td>Dr. Robert Wilson</td><td>Oncology</td><td>Tue, Wed, Fri</td><td>11:00 AM - 03:00 PM</td></tr>
+          <tr><td>Dr. Priya Sharma</td><td>Gynecology</td><td>Mon to Sat</td><td>10:00 AM - 01:00 PM</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+ 
+  <section id="appointment">
+    <div class="section-header">
+        <div class="editorial-subtitle">Patient Concierge</div>
+        <h2>Request a Consultation</h2>
+        <p>Allow our staff to assist you in arranging your visit. Secure your preferred slot online with ease.</p>
+    </div>
+    
+    <div class="booking-grid">
+
+      <div class="booking-context">
+          <h2>At your service.</h2>
+          <p>Submit your details, and our patient concierge team will contact you shortly to confirm your appointment and assist with any special requirements.</p>
+          
+          <div class="contact-item">
+              <i class="fas fa-phone-alt"></i>
+              <div>
+                  <h4>Priority Line</h4>
+                  <span>1-800-CARE-123</span>
+              </div>
+          </div>
+          <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                  <h4>Concierge Desk</h4>
+                  <span>concierge@kanjirappallymedicity.com</span>
+              </div>
+          </div>
+          <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                  <h4>Location</h4>
+                  <span>Kanjirappally, Kerala, India</span>
+              </div>
+          </div>
+      </div>
+      
+
+      <div class="booking-form-wrap">
+        <form id="appointmentForm">
+          <div class="form-row">
+              <div class="form-col-full">
+                <label>Patient Full Name</label>
+                <input type="text" id="name" placeholder="Enter formal name" required>
+              </div>
+          </div>
+          
+          <div class="form-row">
+              <div class="form-col-full">
+                <label>Contact Number</label>
+                <input type="tel" id="phone" placeholder="+91 98765..." required>
+              </div>
+              <div class="form-col-full">
+                <label>Email Address</label>
+                <input type="email" id="email" placeholder="email@example.com" required>
+              </div>
+          </div>
+          
+          <div class="form-row">
+              <div class="form-col-full">
+                <label>Department Required</label>
+                <select id="department" required>
+                  <option value="" disabled selected>Select specialty...</option>
+                  <option>Cardiology</option>
+                  <option>Neurology</option>
+                  <option>Orthopedics</option>
+                  <option>Pediatrics</option>
+                  <option>Oncology</option>
+                  <option>Gynecology</option>
+                </select>
+              </div>
+              <div class="form-col-full">
+                <label>Preferred Date</label>
+                <input type="date" id="date" required>
+              </div>
+          </div>
+
+          <button type="submit" class="btn btn-gold submit-btn">Submit Request</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="modal-overlay" id="overlay">
+    <div class="modal" id="popup">
+      <div class="modal-icon"><i class="fas fa-check-circle"></i></div>
+      <h2>Request Received</h2>
+      <p id="popupText"></p>
+      <button onclick="closePopup()" class="btn btn-gold" style="width:100%; justify-content:center;">Close</button>
+    </div>
+  </div>
+
+
+  <footer>
+    <div class="footer-grid">
+        <div class="footer-col" style="grid-column: span 1;">
+            <a href="#" class="footer-brand"><i class="fas fa-leaf"></i> Medicity</a>
+            <p style="margin-top: 16px; font-size: 15px; line-height: 1.8; font-weight: 300;">Elevating the standard of healthcare in Kanjirappally through medical excellence and luxurious patient care.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Institution</h4>
+            <ul>
+                <li><a onclick="showTab('home')" style="cursor:pointer;">The Medicity Story</a></li>
+                <li><a onclick="showTab('facilities')" style="cursor:pointer;">Our Facilities</a></li>
+                <li><a onclick="showTab('services')" style="cursor:pointer;">Centers of Excellence</a></li>
+                <li><a onclick="showTab('doctors')" style="cursor:pointer;">Physician Directory</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Specialties</h4>
+            <ul>
+                <li><a href="#">Cardiology</a></li>
+                <li><a href="#">Neurology</a></li>
+                <li><a href="#">Orthopedics</a></li>
+                <li><a href="#">Executive Health</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Connect</h4>
+            <ul style="font-size: 14px; line-height: 2; color: rgba(255,255,255,0.6); font-weight: 300;">
+                <li style="display: flex; gap: 12px; align-items: flex-start;"><i class="fas fa-map-marker-alt" style="margin-top: 5px; color:var(--accent);"></i> <span>Premium Wing, Main Road<br>Kanjirappally, Kerala</span></li>
+                <li style="display: flex; gap: 12px; align-items: center;"><i class="fas fa-phone" style="color:var(--accent);"></i> +91 1800 123 4567</li>
+                <li style="display: flex; gap: 12px; align-items: center;"><i class="fas fa-envelope" style="color:var(--accent);"></i> concierge@medicity.com</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>&copy; 2026 Kanjirappally Medicity. All Rights Reserved.</span>
+        <span><a href="#" style="color: inherit; text-decoration: none;">Privacy</a> &nbsp;|&nbsp; <a href="#" style="color: inherit; text-decoration: none;">Terms</a></span>
+    </div>
+  </footer>
+
+
+  <script>
+
+    function showTab(tabId) {
+      document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+      const target = document.getElementById(tabId);
+      if(target) target.classList.add("active");
+      
+      document.querySelectorAll("nav li").forEach(li => li.classList.remove("active"));
+      const navItem = document.getElementById(`nav-${tabId}`);
+      if(navItem) navItem.classList.add("active");
+      
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+
+    function searchDoctor() {
+      let input = document.getElementById("searchDoctor").value.toLowerCase();
+      let doctors = document.querySelectorAll(".doctor-card");
+      doctors.forEach(doctor => {
+        let text = doctor.textContent.toLowerCase();
+        doctor.style.display = text.includes(input) ? "block" : "none";
+      });
+    }
+
+
+    document.getElementById("appointmentForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const dept = document.getElementById("department").value;
+      const date = document.getElementById("date").value;
+      
+      if(!dept) { alert("Please select a department."); return; }
+      
+      document.getElementById("popupText").innerHTML = 
+        `Thank you, <b>${name}</b>. Your consultation request for <b>${dept}</b> on <b>${date}</b> has been received. Our concierge will contact you shortly.`;
+      
+      document.getElementById("overlay").style.display = "block";
+      this.reset();
+    });
+
+
+    function closePopup() {
+      document.getElementById("overlay").style.display = "none";
+    }
+
+ 
+    window.onload = function() {
+        let today = new Date().toISOString().split('T')[0];
+        document.getElementById("date").setAttribute('min', today);
+    }
+  </script>
+</body>
+</html>
